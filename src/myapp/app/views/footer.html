@@ -1,0 +1,28 @@
+  {{if eq .RunMode "dev"}}
+    {{template "debug.html" .}}
+  {{end}}
+  <script type="text/javascript">
+$(function(){
+
+$('#test').click(function(){
+    $("#file_upload").uploadify({		//绑定元素
+    'fileObjName':'file',//html input标签的name属性的值吧。
+    'debug':false,
+    'auto':false,	//自动上传
+'buttonText':'Choose A File',
+'removeCompleted':true, //上传完成以后是否保存进度条
+'cancelImg':'/public/js/uploadify/uploadify-cancel.png',
+'swf':'/public/js/uploadify/uploadify.swf',	//必须设置  swf文件路径
+'uploader':'/upload',			//必须设置，上传文件触发的url
+'fileTypeDesc':'FileType',
+'fileTypeExts':'*.*',
+'overrideEvents':['onDialogClose'],
+ 'multi':false,
+ 'formData':{'url':window.location.search}	//这里我需要得到当前页面url的问号后面的值，所以就用 fromData 这个参数。
+ })
+})
+
+})
+</script>
+  </body>
+</html>
